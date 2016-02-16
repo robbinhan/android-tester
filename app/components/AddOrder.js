@@ -21,10 +21,22 @@ export default class AddOrder extends Component {
 			fields: {game, version, factory, packageName, mainactive, packageFile},
 			handleSubmit,
       onDrop,
-			orderstate
+			orderstate,
+			location
 		} = self.props;
 
 		console.log('addprops',self.props);
+
+		let isnew = false;
+		if (_.has(location.query, 'new')) {
+			 isnew = true;
+			 location.query = {};
+		}
+
+		let filePath = '';
+		if (orderstate.get('filePath') && !isnew) {
+			 filePath = orderstate.get('filePath')
+		}
 
     return (
 			<div>
@@ -53,7 +65,7 @@ export default class AddOrder extends Component {
 
 					<div className="form-group">
 	 					<label>游戏包：</label>
-							{orderstate.get('filePath') ? orderstate.get('filePath') : ''}
+							{filePath}
 							<Dropzone onDrop={onDrop}>
 									<div>Try dropping some file here, or click to select files to upload.</div>
 							</Dropzone>

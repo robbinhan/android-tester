@@ -40,7 +40,7 @@ export default class ShowOrder extends Component {
       <div>启动窗口名：{mainactive}</div>
       <DeviceList />
       <pre>
-        {stdout}
+        {stdout ? stdout : '暂无执行记录'}
       </pre>
       <button className="btn btn-primary" onClick={(e)=>{e.preventDefault();execTestFlow(orderstate)}}>执行测试</button>
       </div>

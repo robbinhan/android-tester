@@ -12,7 +12,7 @@ export default function testorder(state = Map({status: null,method:'add'}), acti
                 id: action.lastID
             });
     case DROPED_FILE:
-      return Map(state).set('filePath',action.path).set('fileName',action.name);
+      return Map(state).set('filePath',action.path).set('fileName',action.name).set('status','droped');
     case QUERYED_HISTORY_ORDERS:
       action.rows.forEach((el,index,array)=>{
         array[index] = Map(el)

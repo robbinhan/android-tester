@@ -79,10 +79,9 @@ export function execTestFlow(orderstate) {
 
     const {game,version,factory,packagename,mainactive,id,path} = orderstate.get("order")
 
+    let testerFile = process.resourcesPath + "/app/tester.sh";
     if (process.env.NODE_ENV === 'development') {
-      const testerFile = './tester.sh';
-    } else {
-      const testerFile = process.resourcesPath + "/app/tester.sh";
+       testerFile = './tester.sh';
     }
 
     console.log('call execTestFlow',packagename,mainactive, id,path);
@@ -112,7 +111,8 @@ export function execTestFlow(orderstate) {
           console.log("update err is " + err);
         }
 
-        dispatch(queryOrderAction(row));
+        console.log('call queryOrder');
+        dispatch(queryOrder(id));
       });
       console.log(`child process exited with code ${code}`);
     });

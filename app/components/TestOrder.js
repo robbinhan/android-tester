@@ -20,18 +20,20 @@ export default class TestOrder extends Component {
 			orderstate,
 			execTestFlow,
 			onDrop,
-			queryOrder
+			queryOrder,
+			location
 		} = self.props;
 
 		console.log('testorder props',self.props);
 
 		if (params.method == 'add') {
-			return <AddOrder onSubmit={onSubmit} onDrop={onDrop} orderstate={orderstate}/>
+			return <AddOrder onSubmit={onSubmit} onDrop={onDrop} orderstate={orderstate} location={location}/>
 		} else if (params.method == 'show') {
-			if (params.id && orderstate.has('order') === false) {
+			if ((params.id && orderstate.has('order') === false) || orderstate.get('order').id != params.id)  {
 				 queryOrder(params.id)
 				 return <div></div>
 			} else {
+				// location.pathname
 				return <ShowOrder orderstate={orderstate} execTestFlow={execTestFlow} index={params.id}/>
 			}
 

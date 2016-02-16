@@ -5,10 +5,9 @@ import HomePage from './containers/HomePage';
 import TestOrderPage from './containers/TestOrderPage';
 import DevicesPage from './containers/DevicesPage';
 
-import history from './history'
 
 export default (
-  <Route path="/" component={App} history={history}>
+  <Route path="/" component={App} >
     <IndexRoute component={HomePage} />
     <Route path="/testorder/:method" component={TestOrderPage} />
     <Route path="/testorder/:method/:id" component={TestOrderPage} />

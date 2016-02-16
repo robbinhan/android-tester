@@ -19,7 +19,7 @@ export default class Home extends Component {
      } = self.props;
 
     console.log('home',self.props);
-
+    
     return (
       <div>
           <Nav />
